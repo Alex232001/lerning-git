@@ -1,0 +1,30 @@
+
+name: Install CMake
+
+on:
+   workflow_dispatch:
+# Список шагов
+jobs:
+  build:
+    
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Download CMake
+      run: |
+        # Команда для загрузки CMake с официального сайта
+        Invoke-WebRequest -Uri "https://github.com/Kitware/CMake/releases/download/v3.20.3/cmake-3.20.3-windows-x86_64.zip" -OutFile cmake.zip
+
+        # Распаковка архива
+        Expand-Archive cmake.zip -DestinationPath .
+
+    - name: Add CMake to PATH
+      run: |
+        $Env:PATH += ";$(pwd)\cmake-3.20.3-windows-x86_64\bin”
+
+    - name: Verify CMake installation
+      run: cmake --version 
+  
