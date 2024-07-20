@@ -1,0 +1,20 @@
+name: Build C++ project
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Visual Studio community
+      run: choco install visualstudio2019community
+
+    - name: Install Visual Studio workload
+      run: choco install visualstudio2019-workload-vctools
+
+    - name: Run MSBuild
+      run: msbuild YourProjectFile.sln
