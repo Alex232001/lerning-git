@@ -8,6 +8,30 @@ jobs:
     runs-on: windows-latest
 
     steps:
+
+    - name: Download CMake
+      run: |
+        # Команда для загрузки CMake с официального сайта
+        Invoke-WebRequest -Uri "https://github.com/Kitware/CMake/releases/download/v3.20.3/cmake-3.20.3-windows-x86_64.zip" -OutFile cmake.zip
+
+        # Распаковка архива
+        Expand-Archive cmake.zip -DestinationPath .
+
+    - name: Add CMake to PATH
+      run: |
+        $Env:PATH += ";$(pwd)\cmake-3.20.3-windows-x86_64\bin”
+
+    - name: Verify CMake installation
+      run: cmake --version 
+      ##############
+
+    - name: Install Visual Studio community
+      run: choco install visualstudio2019community
+
+    - name: Install Visual Studio workload
+      run: choco install visualstudio2019-workload-vctools
+     ######
+    
     - name: Checkout code
       uses: actions/checkout@v4
 
@@ -17,7 +41,11 @@ jobs:
     - name: Clone Repostitory
       run: git clone https://github.com/dillongoostudios/goo-engine.git
     - name: cd goo-engine
-      run: cd ./goo-engine && dir
+      run: |
+         cd ./goo-engine && dir
+         ./make.bat update
+         ./make.bat
+         
     - name: directory
       run: dir
 
