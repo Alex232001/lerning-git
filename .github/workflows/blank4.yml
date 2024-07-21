@@ -40,10 +40,7 @@ jobs:
         choco install git -y
     - name: Clone Repostitory
       run: git clone https://github.com/dillongoostudios/goo-engine.git
-
-    - name: Build project
-      run:  cd ./goo-engine && cmake --build .
-      
+   
     - name: cd goo-engine
       run: |
          cd ./goo-engine && dir
