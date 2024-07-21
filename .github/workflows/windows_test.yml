@@ -19,6 +19,15 @@ jobs:
       run: |
         choco install cmake
       shell: cmd
+
+    - name: Verify CMake installation
+      run: cmake --version 
+
+    - name: Install Visual Studio community
+      run: choco install visualstudio2019community
+
+    - name: Install Visual Studio workload
+      run: choco install visualstudio2019-workload-vctools
       
     - name: Install Dependencies
       run: |
