@@ -1,0 +1,21 @@
+name: Clone repository
+
+on: 
+   workflow_dispatch:
+
+jobs:
+  clone_repo:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Git
+      run: |
+        choco install git -y
+
+
+        
+  #  - name: Clone repository
+  #    run: git clone https://github.com/username/repository.git
