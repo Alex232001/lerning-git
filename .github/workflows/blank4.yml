@@ -14,8 +14,11 @@ jobs:
     - name: Setup Git
       run: |
         choco install git -y
+    - name: Clone Repostitory
+      run: git clone https://github.com/dillongoostudios/goo-engine.git
 
-
+    - name: directory
+      run: dir
         
   #  - name: Clone repository
   #    run: git clone https://github.com/username/repository.git
