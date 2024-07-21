@@ -16,9 +16,11 @@ jobs:
         choco install git -y
     - name: Clone Repostitory
       run: git clone https://github.com/dillongoostudios/goo-engine.git
-
+    - name: cd goo-engine
+      run: cd goo-engine
     - name: directory
       run: dir
-        
+
+           
   #  - name: Clone repository
   #    run: git clone https://github.com/username/repository.git
