@@ -6,6 +6,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
 
     steps:
 
@@ -25,7 +29,9 @@ jobs:
       
     - name: pwfff
       run: gcc hello.c -o hello
-        
+
+    - name: ls3
+      run: ls   
     - name: Checkout code
       uses: actions/checkout@v2
       
@@ -35,11 +41,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: "v0.0.19"
+        tag_name: "v0.0.21"
         release_name: Release ${{ github.sha }}
         body: |
           Release ${{ github.sha }}
-          
+           
     - name: Upload release artifact
       uses: actions/upload-release-asset@v1
       env:
