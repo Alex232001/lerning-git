@@ -43,8 +43,6 @@ jobs:
       with:
         tag_name: "v0.0.22"
         release_name: Release ${{ github.sha }}
-        body: |
-          Release ${{ github.sha }}
            
     - name: Upload release artifact
       uses: actions/upload-release-asset@v1
@@ -52,9 +50,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./home/runner/work/lerning-git/lerning-git/hello
+        asset_path: ./hello
         asset_name: hello
         asset_content_type: application/octet-stream
 
-    - name: ls2
-      run: ls
+
