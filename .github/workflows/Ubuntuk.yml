@@ -30,6 +30,11 @@ jobs:
         make update
         make
 
+    - name: Find
+      run: |
+          ls
+          
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
