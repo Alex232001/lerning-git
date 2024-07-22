@@ -35,7 +35,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: "v0.0.9"
+        tag_name: "v0.0.19"
         release_name: Release ${{ github.sha }}
         body: |
           Release ${{ github.sha }}
@@ -46,8 +46,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./hello
-        asset_name: hello-${{ github.sha }}.exe
+        asset_path: /home/runner/work/lerning-git/lerning-git/hello
+        asset_name: hello
         asset_content_type: application/octet-stream
 
     - name: ls2
