@@ -8,6 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+  #  - name: build
+  #    uses: actions/checkout@v4
+    - name: buils
+      run: |
+         echo "brrr" > executable
+    
     - name: Checkout code
       uses: actions/checkout@v2
       
@@ -28,6 +35,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./path/to/executable
+        asset_path: ./executable
         asset_name: executable-${{ github.sha }}.exe
         asset_content_type: application/octet-stream
