@@ -13,8 +13,8 @@ jobs:
   #    uses: actions/checkout@v4
     - name: buils
       run: |
+         touch executable
          echo "brrr" > executable
-         dir
          ls
     
     - name: Checkout code
@@ -26,7 +26,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: "v0.0.4"
+        tag_name: "v0.0.5"
         release_name: Release ${{ github.sha }}
         body: |
           Release ${{ github.sha }}
